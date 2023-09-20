@@ -1,9 +1,12 @@
+import clsx from "clsx";
 import { ActiveLink, type ActiveLinkProps } from "@/ui/atoms/ActiveLink";
 
 export type PaginationProps<T extends string> = {
 	totalPages: number;
 	hrefBuilder: (page: number) => ActiveLinkProps<T>["href"];
 };
+
+const sharedClassName = "text-md p-2 font-semibold";
 
 export const Pagination = <T extends string>({ totalPages, hrefBuilder }: PaginationProps<T>) => {
 	return (
@@ -13,8 +16,8 @@ export const Pagination = <T extends string>({ totalPages, hrefBuilder }: Pagina
 					<li key={page}>
 						<ActiveLink
 							href={hrefBuilder(page)}
-							className="text-md p-2 font-semibold"
-							activeClassName="text-magenta"
+							className={sharedClassName}
+							activeClassName={clsx(sharedClassName, "text-magenta")}
 							exact
 						>
 							{page}
