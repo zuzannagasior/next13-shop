@@ -12,5 +12,7 @@
 	},
 	"editor.quickSuggestions": {
 		"strings": true
-	}
+	},
+	"mdx-preview.preview.useVscodeMarkdownStyles": false,
+	"mdx-preview.preview.useWhiteBackground": true
 }

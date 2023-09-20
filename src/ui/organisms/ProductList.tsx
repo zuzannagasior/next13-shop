@@ -1,6 +1,7 @@
 import { type FC } from "react";
 import { type ProductItemType } from "@/ui/types";
 import { ProductListItem } from "@/ui/molecules/ProductListItem";
+import "server-only";
 
 export type ProductListProps = {
 	products: ProductItemType[];

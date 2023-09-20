@@ -7,7 +7,7 @@ export type ProductListItemCoverImageProps = {
 
 export const ProductListItemCoverImage: FC<ProductListItemCoverImageProps> = ({ src, alt }) => {
 	return (
-		<div className="aspect-square overflow-hidden rounded-md border bg-slate-50 hover:bg-slate-100">
+		<div className="aspect-square overflow-hidden rounded-md border border-magenta">
 			<img
 				width={300}
 				height={300}
