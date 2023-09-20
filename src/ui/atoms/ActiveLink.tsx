@@ -1,20 +1,27 @@
 "use client";
 
-import Link, { type LinkProps } from "next/link";
-import { type FC } from "react";
+import Link from "next/link";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
+import { type Route } from "next";
 
-export type ActiveLinkProps = {
+export type ActiveLinkProps<T extends string> = {
 	children: React.ReactNode;
-	href: LinkProps<string>["href"];
+	href: Route<T>;
 	className?: string;
 	activeClassName?: string;
+	exact?: boolean;
 };
 
-export const ActiveLink: FC<ActiveLinkProps> = ({ children, href, className, activeClassName }) => {
+export const ActiveLink = <T extends string>({
+	children,
+	href,
+	className,
+	activeClassName,
+	exact = false,
+}: ActiveLinkProps<T>) => {
 	const pathname = usePathname();
-	const active = pathname === href;
+	const active = exact ? pathname === href : pathname.startsWith(href);
 
 	return (
 		<Link href={href} className={clsx(className, active && activeClassName)}>

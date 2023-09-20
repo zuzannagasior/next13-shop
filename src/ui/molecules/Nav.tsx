@@ -1,13 +1,12 @@
-import { type FC } from "react";
-import { type LinkProps } from "next/link";
+import { type Route } from "next";
 import { ActiveLink } from "../atoms/ActiveLink";
 import "server-only";
 
-export type NavProps = {
-	items: { label: string; href: LinkProps<string>["href"] }[];
+export type NavProps<T extends string> = {
+	items: { label: string; href: Route<T> }[];
 };
 
-export const Nav: FC<NavProps> = ({ items }) => {
+export const Nav = <T extends string>({ items }: NavProps<T>) => {
 	return (
 		<nav>
 			<ul className="flex gap-2 text-neutral-500">
