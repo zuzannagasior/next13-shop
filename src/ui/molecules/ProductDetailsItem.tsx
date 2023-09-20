@@ -1,7 +1,7 @@
 import { type FC } from "react";
 import { type ProductItemType } from "../types";
-import { ProductListItemDescription } from "@/ui/atoms/ProductListItemDescription";
 import { ProductListItemCoverImage } from "@/ui/atoms/ProductListItemCoverImage";
+import { ProductDetailsItemDescription } from "@/ui/molecules/ProductDetailsItemDescription";
 
 export type ProductDetailsItemProps = {
 	product: ProductItemType;
@@ -9,9 +9,11 @@ export type ProductDetailsItemProps = {
 
 export const ProductDetailsItem: FC<ProductDetailsItemProps> = ({ product }) => {
 	return (
-		<article>
+		<article className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 			<ProductListItemCoverImage src={product.coverImage.src} alt={product.coverImage.alt} />
-			<ProductListItemDescription product={product} />
+			<div className="sm:px-8">
+				<ProductDetailsItemDescription product={product} />
+			</div>
 		</article>
 	);
 };
