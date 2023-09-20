@@ -7,7 +7,7 @@ import "server-only";
 export const Header: FC = () => {
 	return (
 		<header>
-			<div className="mx-auto flex max-w-6xl items-center justify-between p-5 px-8">
+			<div className="mx-auto flex max-w-7xl items-center justify-between p-5 px-12">
 				<Link href="/" className="inline-flex cursor-pointer items-center text-lg font-bold">
 					<CircleIcon className="mr-1 fill-magenta" />
 					SHOP
