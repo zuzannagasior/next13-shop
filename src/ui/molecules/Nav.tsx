@@ -16,7 +16,7 @@ export const Nav = <T extends string>({ items }: NavProps<T>) => {
 							href={item.href}
 							className="font-regular cursor-pointer p-2 font-semibold tracking-wide transition-colors hover:text-magenta"
 							activeClassName="text-magenta"
-							exact
+							exact={item.href === "/"}
 						>
 							{item.label}
 						</ActiveLink>

@@ -15,8 +15,17 @@ type ProductResponseItem = {
 	longDescription: string;
 };
 
-export const getProductList = async ({ take }: { take: number }): Promise<ProductItemType[]> => {
-	const res = await fetch(`${API_URL}/products?take=${take}`);
+export const getProductList = async ({
+	take,
+	page,
+}: {
+	take: number;
+	page?: number;
+}): Promise<ProductItemType[]> => {
+	const res = await fetch(
+		`${API_URL}/products?take=${take}${page ? `&offset=${(page - 1) * take}` : ""}`,
+	);
+
 	const productsResponse = (await res.json()) as ProductResponseItem[];
 
 	const products = productsResponse.map(productResponseItemToProductItemType);
