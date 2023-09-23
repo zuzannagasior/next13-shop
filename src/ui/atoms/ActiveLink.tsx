@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import { type Route } from "next";
 
@@ -24,7 +23,7 @@ export const ActiveLink = <T extends string>({
 	const active = exact ? pathname === href : pathname.startsWith(href);
 
 	return (
-		<Link href={href} className={clsx(className, active && activeClassName)}>
+		<Link href={href} className={active ? activeClassName : className}>
 			{children}
 		</Link>
 	);

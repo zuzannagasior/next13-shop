@@ -1,10 +1,13 @@
 import { type Route } from "next";
+import clsx from "clsx";
 import { ActiveLink } from "../atoms/ActiveLink";
 import "server-only";
 
 export type NavProps<T extends string> = {
 	items: { label: string; href: Route<T> }[];
 };
+
+const sharedClassName = "font-semibold tracking-wide border-b-2 transition-colors py-2 px-1";
 
 export const Nav = <T extends string>({ items }: NavProps<T>) => {
 	return (
@@ -14,9 +17,9 @@ export const Nav = <T extends string>({ items }: NavProps<T>) => {
 					<li key={index}>
 						<ActiveLink
 							href={item.href}
-							className="font-regular cursor-pointer p-2 font-semibold tracking-wide transition-colors hover:text-magenta"
-							activeClassName="text-magenta"
-							exact
+							className={clsx(sharedClassName, "border-transparent hover:text-magenta")}
+							activeClassName={clsx(sharedClassName, "font-semibold text-magenta border-magenta")}
+							exact={item.href === "/"}
 						>
 							{item.label}
 						</ActiveLink>
