@@ -1,5 +1,7 @@
 import { API_URL } from "./constants";
+import { executeGraphql } from "./graphql";
 import { type ProductItemType } from "@/ui/types";
+import { ProductsGetListDocument } from "@/gql/graphql";
 
 type ProductResponseItem = {
 	id: string;
@@ -22,15 +24,22 @@ export const getProductList = async ({
 	take: number;
 	page?: number;
 }): Promise<ProductItemType[]> => {
-	const res = await fetch(
-		`${API_URL}/products?take=${take}${page ? `&offset=${(page - 1) * take}` : ""}`,
-	);
+	const graphqlResponse = await executeGraphql(ProductsGetListDocument);
 
-	const productsResponse = (await res.json()) as ProductResponseItem[];
-
-	const products = productsResponse.map(productResponseItemToProductItemType);
-
-	return products;
+	return graphqlResponse.products.map((p) => {
+		return {
+			id: p.id,
+			name: p.name,
+			price: p.price,
+			category: p.categories[0]?.name ?? "",
+			coverImage: p.images[0] && {
+				src: p.images[0].url,
+				alt: p.name,
+			},
+			description: p.description,
+			longDescription: p.description,
+		};
+	});
 };
 
 export const getProductById = async (id: ProductResponseItem["id"]): Promise<ProductItemType> => {
