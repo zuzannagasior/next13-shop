@@ -1,9 +1,19 @@
-import clsx from "clsx";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Jost } from "next/font/google";
+import { Merriweather, Merriweather_Sans } from "next/font/google";
 
-const jost = Jost({ subsets: ["latin"] });
+const merriweather = Merriweather({
+	subsets: ["latin"],
+	weight: ["300", "400", "700", "900"],
+	variable: "--font-merriweather",
+	display: "swap",
+});
+
+const merriweatherSans = Merriweather_Sans({
+	subsets: ["latin"],
+	variable: "--font-merriweather-sans",
+	display: "swap",
+});
 
 export const metadata: Metadata = {
 	title: "Next13 shop",
@@ -13,7 +23,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en">
-			<body className={clsx(jost.className)}>{children}</body>
+			<body className={`${merriweather.variable} ${merriweatherSans.variable} font-sans`}>
+				{children}
+			</body>
 		</html>
 	);
 }

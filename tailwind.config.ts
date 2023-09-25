@@ -4,6 +4,10 @@ const config: Config = {
 	content: ["./src/ui/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
 	theme: {
 		extend: {
+			fontFamily: {
+				sans: ["var(--font-merriweather-sans)"],
+				serif: ["var(--font-merriweather)"],
+			},
 			colors: {
 				magenta: "#bb2749",
 			},

@@ -8,7 +8,10 @@ export const Header: FC = () => {
 	return (
 		<header>
 			<div className="mx-auto flex max-w-7xl items-center justify-between p-5 px-12">
-				<Link href="/" className="inline-flex cursor-pointer items-center text-lg font-bold">
+				<Link
+					href="/"
+					className="inline-flex cursor-pointer items-center font-serif text-lg font-bold"
+				>
 					<Circle className="mr-1 text-magenta" />
 					SHOP
 				</Link>
