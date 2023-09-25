@@ -1,13 +1,11 @@
 import { Suspense } from "react";
 import { type Metadata } from "next";
-import { getProductById } from "@/api/products";
+import { getProductById, getProductList } from "@/api/products";
 import { ProductDetailsItem } from "@/ui/molecules/ProductDetailsItem";
 import { SimilarProductList } from "@/ui/organisms/SimilarProductList";
-import { API_URL } from "@/api/constants";
 
 export async function generateStaticParams() {
-	const res = await fetch(`${API_URL}/products`);
-	const products = (await res.json()) as { id: string; title: string }[];
+	const products = await getProductList({ take: 10 });
 
 	return products.map((product) => ({ productId: product.id }));
 }
@@ -25,7 +23,8 @@ export const generateMetadata = async ({
 		openGraph: {
 			title: `${product.name} | SHOP`,
 			description: product.description,
-			images: [product.coverImage.src],
+			// TODO: fix types
+			// images: [product.images[0]?.url],
 		},
 	};
 };

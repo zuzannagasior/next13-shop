@@ -1,10 +1,10 @@
 import { type FC } from "react";
-import { type ProductItemType } from "@/ui/types";
 import { ProductListItem } from "@/ui/molecules/ProductListItem";
 import "server-only";
+import { type ProductListItemFragment } from "@/gql/graphql";
 
 export type ProductListProps = {
-	products: ProductItemType[];
+	products: ProductListItemFragment[];
 };
 
 export const ProductList: FC<ProductListProps> = ({ products }) => {

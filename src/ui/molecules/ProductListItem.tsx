@@ -2,11 +2,11 @@ import { type FC } from "react";
 import Link from "next/link";
 import { ProductListItemDescription } from "@/ui/atoms/ProductListItemDescription";
 import { ProductListItemCoverImage } from "@/ui/atoms/ProductListItemCoverImage";
-import { type ProductItemType } from "@/ui/types";
 import "server-only";
+import { type ProductListItemFragment } from "@/gql/graphql";
 
 export type ProductListItemProps = {
-	product: ProductItemType;
+	product: ProductListItemFragment;
 };
 
 export const ProductListItem: FC<ProductListItemProps> = ({ product }) => {
@@ -14,7 +14,9 @@ export const ProductListItem: FC<ProductListItemProps> = ({ product }) => {
 		<li>
 			<Link href={`/product/${product.id}`}>
 				<article>
-					<ProductListItemCoverImage src={product.coverImage.src} alt={product.coverImage.alt} />
+					{product.images[0] && (
+						<ProductListItemCoverImage src={product.images[0].url} alt={product.name} />
+					)}
 					<ProductListItemDescription product={product} />
 				</article>
 			</Link>

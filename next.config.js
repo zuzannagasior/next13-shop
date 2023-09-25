@@ -5,6 +5,7 @@ const nextConfig = {
 		typedRoutes: true,
 		mdxRs: true,
 	},
+	// TODO: redirects to /{category}/1
 	async redirects() {
 		return [
 			{

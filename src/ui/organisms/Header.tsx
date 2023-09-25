@@ -1,7 +1,7 @@
 import { type FC } from "react";
 import Link from "next/link";
+import { Circle } from "lucide-react";
 import { Nav } from "../molecules/Nav";
-import { CircleIcon } from "@/icons/CircleIcon";
 import "server-only";
 
 export const Header: FC = () => {
@@ -9,7 +9,7 @@ export const Header: FC = () => {
 		<header>
 			<div className="mx-auto flex max-w-7xl items-center justify-between p-5 px-12">
 				<Link href="/" className="inline-flex cursor-pointer items-center text-lg font-bold">
-					<CircleIcon className="mr-1 fill-magenta" />
+					<Circle className="mr-1 text-magenta" />
 					SHOP
 				</Link>
 				<Nav
