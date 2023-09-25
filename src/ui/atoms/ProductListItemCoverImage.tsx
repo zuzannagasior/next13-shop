@@ -1,4 +1,5 @@
 import { type FC } from "react";
+import NextImage from "next/image";
 
 export type ProductListItemCoverImageProps = {
 	src: string;
@@ -8,7 +9,7 @@ export type ProductListItemCoverImageProps = {
 export const ProductListItemCoverImage: FC<ProductListItemCoverImageProps> = ({ src, alt }) => {
 	return (
 		<div className="aspect-square overflow-hidden rounded-md border border-magenta">
-			<img
+			<NextImage
 				width={300}
 				height={300}
 				src={src}
